@@ -9,7 +9,7 @@ export default async function Home({
     searchParams: { [key: string]: string | string[] | undefined };
 }) {
     const page =
-        (searchParams.page && parseInt(searchParams.page as string)) || 1;
+        (searchParams.page && parseInt(searchParams.page as string)) || 15;
     const per_page =
         (searchParams.per_page && parseInt(searchParams.per_page as string)) ||
         DEFAULT_PER_PAGE;
@@ -22,7 +22,7 @@ export default async function Home({
             {query ? (
                 <SearchCardList query={query} banner />
             ) : (
-                <SearchCardList query={SITENAME.split(" ")[1]} />
+                <CardList page={page} per_page={per_page} fld_id={fld_id} />
             )}
         </div>
     );
